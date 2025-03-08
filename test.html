@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demande de Devis</title>
+    <link rel="stylesheet" href="test.css">
+</head>
+<body>
+<div class="form-container">
+    <h1>Demande de devis :</h1>
+    <form action="envoi_devis.php" method="POST">
+        <div class="checkbox-group">
+            <label>Problème de l'appareil :</label><br>
+            <select id="issue_type" name="issue_type" required>
+                <option value="">Sélectionnez le problème</option>
+                <option value="ecran">Écran</option>
+                <option value="batterie">Batterie</option>
+                <option value="camera">Caméra</option>
+                <option value="connectique">Connectiques</option>
+                <option value="haut_parleur">Haut-parleur</option>
+                <option value="haut_parleur">Bouton</option>
+                <option value="haut_parleur">Vitre arrière</option>
+                <option value="autre">Autres</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="description">Expliquez la panne en quelques mots :</label>
+            <input type="text" id="description" name="description" placeholder="Exemple : Le tactile ne marche plus" required>
+        </div>
+        <div class="form-group">
+            <label for="marque">Marque :</label>
+            <input type="text" id="marque" name="marque" required>
+        </div>
+        <div class="form-group">
+            <label for="modele">Modèle :</label>
+            <input type="text" id="modele" name="modele" required>
+        </div>
+        <div class="form-group">
+            <label for="nom">Nom :</label>
+            <input type="text" id="nom" name="nom" required>
+        </div>
+        <div class="form-group">
+            <label for="prenom">Prénom :</label>
+            <input type="text" id="prenom" name="prenom" required>
+        </div>
+        <div class="form-group">
+            <label for="telephone">Numéro de Téléphone :</label>
+            <input type="tel" id="telephone" name="telephone" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email :</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <input type="checkbox" id="autorisation" name="autorisation" required>
+            <label for="autorisation">
+                J'autorise Myphone à effectuer un diagnostic sur mon appareil et j'ai pris connaissance des
+                <a href="#">conditions générales de vente</a>
+            </label>
+        </div>
+        <button type="submit">Envoyer</button>
+    </form>
+</div>
+</body>
+</html>
+
+
+

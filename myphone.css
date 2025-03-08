@@ -1,0 +1,169 @@
+/* Général */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+    
+}
+
+/* Navigation */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+}
+
+nav ul li {
+    margin: 0 40px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Section Hero */
+main{
+    /*background-color: #0077aa;*/
+    background-image: url(img/background.jpeg);
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+}
+.hero p {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+h3{
+    font-size: 2.5rem;
+}
+
+.icone-container {
+    display:flex;
+    justify-content:space-around;
+    align-items: center;
+    padding: 20px;
+}
+
+.icone {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.icone img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+}
+
+.icone p {
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+/*.presentation {
+    text-align: left;
+    margin-left: 5%;
+    margin-right: 50%;
+    margin-top: 30px;
+}
+.presentation p{
+    margin-top: 10px;
+}
+.presentation img{
+    float: left;
+}*/
+.presentation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+.presentation h2 {
+    margin-bottom: 30px;
+}
+
+.texte {
+    width: 60%;
+    text-align: left;
+    margin-left: 2%;
+    margin-right: 10%;
+    
+}
+
+.image {
+    width: 40%;
+    text-align: right;
+}
+
+.image img {
+    width: 100%;
+    height: auto;
+}
+
+.savoir {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.savoir h2 {
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.savoir p {
+    padding: 0 20px;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.blue {
+    color: rgb(57, 179, 255);
+}
+
+/* Deuxième partie "PHONE" en blanc */
+.white {
+    color: white;
+}
+b{
+    font-size: smaller;
+    font-weight: normal;
+    text-align: center;
+}
+
