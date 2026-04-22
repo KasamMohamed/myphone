@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Obtenez un devis gratuit pour la réparation de votre téléphone, tablette ou console à Morez. MyPhone vous propose des réparations rapides et garanties.">
+    <title>Demande de devis réparation téléphone à Morez | MyPhone</title>
+    <link rel="icon" type="image/png" href="img/M-2.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="myphone.css">
+    <link rel="stylesheet" href="devis-reparation.css">
+</head>
+<body>
+
+<header class="navbar">
+    <div class="nav-container">
+        <a href="index.html" class="logo">
+            <span class="blue">MY</span><span class="white">PHONE</span>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="accessoires-telephone.html">Accessoires</a></li>
+                <li><a href="devis-reparation.html" class="active">Devis en ligne</a></li>
+            </ul>
+        </nav>
+        <a href="tel:+33759692033" class="btn-call-header">
+            <i class="fa-solid fa-phone"></i> 07 59 69 20 33
+        </a>
+    </div>
+</header>
+
+<main>
+    <section class="page-header">
+        <div class="container text-center">
+            <h1>Demande de devis gratuit</h1>
+            <p class="page-subtitle">Décrivez-nous le problème rencontré avec votre appareil. Nous vous répondrons dans les plus brefs délais avec une estimation de prix.</p>
+        </div>
+    </section>
+
+    <section class="form-section">
+        <div class="container form-container-wrapper">
+
+            <div class="form-info-panel">
+                <h2>Comment ça marche ?</h2>
+                <ul class="steps-list">
+                    <li>
+                        <div class="step-number">1</div>
+                        <div class="step-text">
+                            <strong>Remplissez le formulaire</strong>
+                            <p>Précisez la marque, le modèle et la panne de votre appareil.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="step-number">2</div>
+                        <div class="step-text">
+                            <strong>Recevez votre devis</strong>
+                            <p>Nous vous contactons rapidement avec une estimation gratuite et sans engagement.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="step-number">3</div>
+                        <div class="step-text">
+                            <strong>Réparation en boutique</strong>
+                            <p>Déposez votre appareil au 124 Rue De La République à Morez.</p>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="contact-direct">
+                    <p>Besoin d'une réponse immédiate ?</p>
+                    <a href="tel:+33759692033" class="btn-secondary"><i class="fa-solid fa-phone"></i> Appeler le 07 59 69 20 33</a>
+                </div>
+            </div>
+
+            <div class="form-box">
+                <form action="envoi_devis.php" method="POST" class="custom-form">
+
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <label for="issue_type">Nature du problème :</label>
+                            <div class="select-wrapper">
+                                <select id="issue_type" name="issue_type" required>
+                                    <option value="" disabled selected>Sélectionnez le problème principal</option>
+                                    <option value="ecran">Écran cassé / Tactile</option>
+                                    <option value="batterie">Batterie qui se décharge vite</option>
+                                    <option value="connectique">Problème de charge (Connecteur)</option>
+                                    <option value="camera">Caméra / Appareil photo</option>
+                                    <option value="haut_parleur">Haut-parleur / Micro</option>
+                                    <option value="bouton">Boutons (Volume, Allumage)</option>
+                                    <option value="vitre_arriere">Vitre arrière cassée</option>
+                                    <option value="autre">Autre problème</option>
+                                </select>
+                                <i class="fa-solid fa-chevron-down select-icon"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <label for="description">Décrivez la panne plus en détail :</label>
+                            <input type="text" id="description" name="description" placeholder="Ex: Mon iPhone est tombé, l'écran est noir mais il sonne encore." required>
+                        </div>
+                    </div>
+
+                    <div class="form-row split-row">
+                        <div class="form-group">
+                            <label for="marque">Marque :</label>
+                            <input type="text" id="marque" name="marque" placeholder="Ex: Samsung, Apple..." required>
+                        </div>
+                        <div class="form-group">
+                            <label for="modele">Modèle exact :</label>
+                            <input type="text" id="modele" name="modele" placeholder="Ex: Galaxy S21, iPhone 13..." required>
+                        </div>
+                    </div>
+
+                    <div class="form-row split-row">
+                        <div class="form-group">
+                            <label for="nom">Nom :</label>
+                            <input type="text" id="nom" name="nom" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="prenom">Prénom :</label>
+                            <input type="text" id="prenom" name="prenom" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row split-row">
+                        <div class="form-group">
+                            <label for="telephone">Numéro de Téléphone :</label>
+                            <input type="tel" id="telephone" name="telephone" placeholder="06..." required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Adresse Email :</label>
+                            <input type="email" id="email" name="email" placeholder="votre@email.com" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="autorisation" name="autorisation" required>
+                            <label for="autorisation">
+                                J'autorise MyPhone à effectuer un diagnostic sur mon appareil et j'accepte les
+                                <span id="open-cgv" class="link-blue">Conditions Générales de Vente</span>.
+                            </label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-primary submit-btn">Envoyer ma demande</button>
+                </form>
+            </div>
+
+        </div>
+    </section>
+</main>
+
+<div id="cgv-modal" class="modal-overlay">
+    <div class="modal-content">
+        <span id="close-cgv" class="close-btn"><i class="fa-solid fa-xmark"></i></span>
+        <h2>Conditions générales de vente</h2>
+        <div class="cgv-text">
+            <p><strong>Dernière mise à jour : 11/03/2026</strong></p>
+            <p>Les présentes Conditions Générales de Vente et de Service (CGV) régissent les relations contractuelles entre la boutique MYPHONE, située au 124 Rue De La République, 39400 Morez, et toute personne physique ou morale (ci-après "le Client") confiant un appareil pour réparation ou demandant un devis.</p>
+
+            <h3>Article 1 - Objet et acceptation</h3>
+            <p>La remise d'un appareil pour diagnostic ou réparation, ainsi que la signature ou l'acceptation d'un devis (y compris électronique), implique l'acceptation sans réserve des présentes CGV par le Client.</p>
+
+            <h3>Article 2 - Devis et Diagnostic</h3>
+            <p>MYPHONE s'engage à fournir un devis gratuit avant toute intervention payante. Le devis est établi sur la base des déclarations du Client et d'un contrôle visuel externe. Si, lors du démontage, des dommages internes supplémentaires ou non déclarés sont découverts (oxydation, composants arrachés, réparations antérieures non conformes), MYPHONE suspendra l'intervention et proposera un nouveau devis. Le Client restera libre de l'accepter ou de le refuser.</p>
+
+            <h3>Article 3 - Sauvegarde des données et Confidentialité</h3>
+            <p><strong>Il est de la responsabilité exclusive du Client d'effectuer une sauvegarde complète de ses données (contacts, photos, applications, mots de passe) AVANT de confier son appareil à MYPHONE.</strong></p>
+            <p>Lors de certaines interventions, une perte de données ou une réinitialisation de l'appareil peut subvenir. MYPHONE décline toute responsabilité en cas de perte, altération ou destruction des données stockées sur l'appareil. Dans le cadre de notre politique de confidentialité, MYPHONE s'engage à ne jamais consulter, copier ou conserver les données personnelles du Client présentes sur l'appareil, sauf nécessité technique absolue avec l'accord explicite du Client.</p>
+
+            <h3>Article 4 - Oxydation et Vices cachés</h3>
+            <p>Les appareils ayant subi un contact avec un liquide (oxydation) ou des chocs violents présentent un risque élevé de pannes soudaines ou de dysfonctionnements en chaîne. MYPHONE décline toute responsabilité si un appareil s'éteint définitivement, perd certaines fonctionnalités (comme le Face ID ou le Touch ID) ou devient inutilisable pendant ou après le démontage, lorsque celui-ci présente des traces d'oxydation, de torsion de châssis ou de dommages internes antérieurs à la prise en charge.</p>
+
+            <h3>Article 5 - Codes d'accès et Verrouillage</h3>
+            <p>Pour effectuer les tests nécessaires avant et après la réparation (tactile, caméras, réseau, son), le Client doit fournir le code de déverrouillage de l'appareil. Si le Client refuse de fournir ce code ou de désactiver les sécurités, MYPHONE ne pourra tester pleinement l'appareil et ne pourra être tenu responsable d'un éventuel dysfonctionnement non détecté. Les mots de passe fournis sont strictement confidentiels.</p>
+
+            <h3>Article 6 - Tarifs et Modalités de paiement</h3>
+            <p>Les tarifs applicables sont ceux en vigueur au moment de l'acceptation du devis. Le règlement s'effectue au comptant lors de la restitution de l'appareil réparé (sauf acompte exigé pour la commande de pièces spécifiques). En cas de refus de paiement, MYPHONE se réserve le droit d'exercer un droit de rétention sur l'appareil jusqu'au règlement intégral de la facture, conformément à l'article 2286 du Code civil.</p>
+
+            <h3>Article 7 - Garanties des réparations</h3>
+            <p>Les pièces remplacées par MYPHONE sont garanties contre tout défaut de fabrication pour une durée spécifiée sur la facture (généralement de 3 à 6 mois). Cette garantie se limite à l'échange de la pièce défectueuse posée par nos soins.</p>
+            <p><strong>La garantie s'annule immédiatement dans les cas suivants :</strong></p>
+            <ul>
+                <li>Nouvelle casse, fissure ou rayure profonde sur un écran remplacé.</li>
+                <li>Dommage causé par un contact avec un liquide (eau, humidité).</li>
+                <li>Tentative de réparation ultérieure par le Client ou un tiers.</li>
+                <li>Utilisation d'accessoires non conformes (ex: chargeur défectueux endommageant une batterie neuve).</li>
+            </ul>
+
+            <h3>Article 8 - Appareils non réclamés (Abandon)</h3>
+            <p>Le Client est informé par téléphone, SMS ou e-mail lorsque son appareil est prêt. Conformément à la loi du 31 décembre 1903 (modifiée), tout appareil non réclamé dans un délai de <strong>un (1) an</strong> à compter de la date de dépôt sera considéré comme définitivement abandonné. MYPHONE pourra alors en disposer librement (destruction, recyclage ou revente pour couvrir les frais engagés), sans que le Client ne puisse réclamer une quelconque indemnisation.</p>
+
+            <h3>Article 9 - Litiges</h3>
+            <p>Les présentes CGV sont soumises au droit français. En cas de litige, une solution amiable sera recherchée en priorité. À défaut d'accord, le tribunal compétent sera celui du siège social de MYPHONE (Tribunal de Lons-le-Saunier), sauf disposition légale contraire pour les particuliers.</p>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="container footer-grid">
+        <div class="footer-brand">
+            <div class="logo-footer"><span class="blue">MY</span><span class="white">PHONE</span></div>
+            <p>Votre spécialiste en réparation de smartphones, tablettes et consoles dans le Haut-Jura. Rapidité, qualité et sourire garantis.</p>
+        </div>
+        <div class="footer-links">
+            <h3>Liens utiles</h3>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="accessoires-telephone.html">Nos Accessoires</a></li>
+                <li><a href="devis-reparation.html">Demander un devis</a></li>
+            </ul>
+        </div>
+        <div class="footer-social">
+            <h3>Suivez-nous</h3>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/share/12JsRXMVW53/?mibextid=wwXIfr" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/myphone_394?igsh=MWI0NWZuZnIzbXgwag==" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.snapchat.com/add/m_phone39" target="_blank" aria-label="Snapchat"><i class="fab fa-snapchat"></i></a>
+                <a href="https://www.tiktok.com/@myphone39400?_t=ZN-8ucRK1ahuGE&_r=1" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>
+            © 2026 MYPHONE - Tous droits réservés. <br class="mobile-break">
+            Réalisation : <a href="https://k-vizion.fr/" target="_blank" rel="noopener" class="agency-link">K-VIZION</a>
+        </p>
+    </div>
+</footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var modal = document.getElementById("cgv-modal");
+        var btn = document.getElementById("open-cgv");
+        var span = document.getElementById("close-cgv");
+
+        // Ouvrir la modal au clic sur le lien
+        btn.onclick = function() {
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden'; // Empêche le scroll de la page derrière
+        }
+
+        // Fermer la modal au clic sur la croix
+        span.onclick = function() {
+            modal.classList.remove('show');
+            document.body.style.overflow = 'auto'; // Réactive le scroll
+        }
+
+        // Fermer la modal au clic en dehors du cadre blanc
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.classList.remove('show');
+                document.body.style.overflow = 'auto';
+            }
+        }
+    });
+</script>
+
+</body>
+</html>

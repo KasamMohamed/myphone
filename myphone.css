@@ -1,169 +1,661 @@
-/* Général */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* =========================================
+   Variables & Reset (Version Premium)
+   ========================================= */
+:root {
+    --primary-blue: #007aff;
+    --primary-hover: #005ce6;
+    --dark-bg: #0f172a; /* Bleu nuit très profond, plus chic que le noir */
+    --light-bg: #f8fafc;
+    --white: #ffffff;
+    --text-main: #1e293b;
+    --text-secondary: #64748b; /* Utilisé pour le texte d'accompagnement */
+    --border-color: #e2e8f0;
+
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+    --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+    --radius: 12px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* =========================================
+   Verrouillage anti-flottement (Mobile)
+   ========================================= */
+html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden !important; /* Le verrou ! */
+    position: relative;
+    scroll-behavior: smooth;
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--light-bg);
+    color: var(--text-main);
     line-height: 1.6;
-    background-color: #f4f4f4;
-    color: #333;
-    
 }
 
-/* Navigation */
-header {
-    background-color: #333;
-    color: #fff;
-    padding: 10px 0;
+/* Sécurité globale sur les médias */
+img, iframe, video {
+    max-width: 100%;
+    height: auto;
+    display: block;
 }
 
-nav ul {
-    display: flex;
-    justify-content: center;
-    list-style-type: none;
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; width: 100%; }
+.text-secondary { color: var(--text-secondary); }
+.blue { color: var(--primary-blue); }
+.white { color: var(--white); }
+.mt-2 { margin-top: 2rem; }
+
+/* =========================================
+   Navigation Fixe (Sticky Header)
+   ========================================= */
+.navbar {
+    background-color: var(--dark-bg);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: var(--shadow-md);
+    padding: 15px 0;
 }
 
-nav ul li {
-    margin: 0 40px;
-}
-
-nav ul li a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-nav ul li a:hover {
-    text-decoration: underline;
-}
-
-/* Section Hero */
-main{
-    /*background-color: #0077aa;*/
-    background-image: url(img/background.jpeg);
-    background-size: cover;
-    background-position: center;
-    color: white;
-    text-align: center;
-    padding: 60px 20px;
-}
-.hero p {
-    font-size: 1.2rem;
-    font-weight: bold;
-}
-h3{
-    font-size: 2.5rem;
-}
-
-.icone-container {
-    display:flex;
-    justify-content:space-around;
-    align-items: center;
-    padding: 20px;
-}
-
-.icone {
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-}
-
-.icone img {
-    width: 50px;
-    height: 50px;
-    margin-bottom: 10px;
-}
-
-.icone p {
-    font-size: 18px;
-    margin-bottom: 10px;
-    font-weight: bold;
-}
-/*.presentation {
-    text-align: left;
-    margin-left: 5%;
-    margin-right: 50%;
-    margin-top: 30px;
-}
-.presentation p{
-    margin-top: 10px;
-}
-.presentation img{
-    float: left;
-}*/
-.presentation {
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
-}
-.presentation h2 {
-    margin-bottom: 30px;
 }
 
-.texte {
-    width: 60%;
-    text-align: left;
-    margin-left: 2%;
-    margin-right: 10%;
-    
+.logo {
+    font-size: 2rem;
+    font-weight: 800;
+    text-decoration: none;
+    letter-spacing: 1px;
 }
 
-.image {
-    width: 40%;
-    text-align: right;
+/* flex-wrap: wrap ajouté ici pour éviter que le menu déborde */
+nav ul { display: flex; list-style: none; gap: 30px; flex-wrap: wrap; }
+nav ul li a {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+nav ul li a:hover, nav ul li a.active { color: var(--primary-blue); }
+
+.btn-call-header {
+    background: rgba(0, 122, 255, 0.1);
+    color: var(--primary-blue);
+    padding: 8px 20px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    border: 1px solid var(--primary-blue);
+    transition: all 0.3s;
+}
+.btn-call-header:hover {
+    background: var(--primary-blue);
+    color: var(--white);
 }
 
-.image img {
-    width: 100%;
-    height: auto;
-}
-
-.savoir {
+/* =========================================
+   Section Hero (Le premier écran)
+   ========================================= */
+.hero {
+    position: relative;
+    background: url('img/background.webp') center/cover no-repeat;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-    margin-top: 50px;
+    padding: 60px 20px;
 }
 
-.savoir h2 {
-    font-weight: bold;
+.hero-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(15, 23, 42, 0.7) 100%);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    color: var(--white);
+}
+
+.trust-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(5px);
+    padding: 8px 16px;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    margin-bottom: 25px;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+.trust-badge i { color: #fbbf24; } /* Étoiles dorées */
+
+.hero h1 { font-size: 3.5rem; font-weight: 800; line-height: 1.15; margin-bottom: 20px; }
+.hero-subtitle { font-size: 1.2rem; color: #cbd5e1; margin-bottom: 40px; }
+
+.hero-actions {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.btn-primary, .btn-secondary {
+    padding: 14px 32px;
+    border-radius: 30px;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: var(--primary-blue);
+    color: var(--white);
+    box-shadow: 0 4px 15px rgba(0, 122, 255, 0.4);
+}
+.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0, 122, 255, 0.6); }
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--white);
+    border: 2px solid var(--white);
+}
+.btn-secondary:hover { background-color: var(--white); color: var(--dark-bg); }
+
+.hero-reassurance {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    font-size: 0.95rem;
+    flex-wrap: wrap;
+}
+.hero-reassurance i { color: var(--primary-blue); margin-right: 5px; }
+
+/* =========================================
+   Section: Titres Généraux
+   ========================================= */
+.section-header { text-align: center; margin-bottom: 50px; }
+.section-header h2 { font-size: 2.5rem; color: var(--dark-bg); margin-bottom: 10px; }
+
+/* =========================================
+   Section: Nos Services (Grille)
+   ========================================= */
+.services-section { padding: 100px 0; background: var(--white); }
+.services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+
+.service-card {
+    background: var(--light-bg);
+    padding: 40px 30px;
+    border-radius: var(--radius);
+    text-align: center;
+    transition: all 0.3s;
+    border: 1px solid var(--border-color);
+}
+.service-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-lg); border-color: var(--primary-blue); background: var(--white); }
+
+.service-icon {
+    width: 70px; height: 70px;
+    background: rgba(0, 122, 255, 0.1);
+    color: var(--primary-blue);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2rem;
+    margin: 0 auto 20px;
+    transition: all 0.3s;
+}
+.service-card:hover .service-icon { background: var(--primary-blue); color: var(--white); }
+.service-card h3 { font-size: 1.3rem; margin-bottom: 15px; color: var(--dark-bg); }
+
+/* =========================================
+   Section: Présentation
+   ========================================= */
+.about-section { padding: 100px 0; background: var(--light-bg); }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+
+.about-text h2 { font-size: 2.2rem; margin-bottom: 20px; color: var(--dark-bg); line-height: 1.3; }
+.about-text p { margin-bottom: 20px; font-size: 1.1rem; }
+
+.benefits-list { list-style: none; margin: 30px 0; }
+.benefits-list li { margin-bottom: 15px; font-size: 1.05rem; display: flex; align-items: flex-start; }
+.benefits-list i { margin-top: 5px; margin-right: 15px; font-size: 1.2rem; width: 20px; }
+
+.about-image { position: relative; }
+.about-image img { width: 100%; border-radius: var(--radius); box-shadow: var(--shadow-lg); }
+
+.experience-badge {
+    position: absolute;
+    bottom: -20px; left: -20px;
+    background: var(--primary-blue); color: var(--white);
+    padding: 20px; border-radius: var(--radius);
+    text-align: center; box-shadow: var(--shadow-md);
+    display: flex; flex-direction: column;
+}
+.experience-badge .number { font-size: 2.5rem; font-weight: 800; line-height: 1; }
+.experience-badge .text { font-size: 0.9rem; font-weight: 500; text-transform: uppercase; }
+
+/* =========================================
+   Section: Contact & Map
+   ========================================= */
+.contact-section { padding: 100px 0; background: var(--white); }
+.contact-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 40px; background: var(--light-bg); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-md); }
+
+.info-panel { padding: 40px; display: flex; flex-direction: column; gap: 30px; }
+.info-block { display: flex; gap: 20px; }
+.info-block i { font-size: 1.5rem; color: var(--primary-blue); margin-top: 5px; }
+.info-block h3 { font-size: 1.2rem; margin-bottom: 10px; color: var(--dark-bg); }
+
+.hours-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* MAGIQUE : Aligne le texte en haut pour éviter les décalages si on passe sur 2 lignes */
+    border-bottom: 1px dashed #cbd5e1;
+    padding: 10px 0;
+    font-size: 0.95rem;
+    gap: 15px; /* Sécurité pour empêcher les mots de se toucher */
+}
+
+.hours-list li:last-child {
+    border: none;
+}
+
+/* On s'assure que les horaires de droite sont bien alignés à droite */
+.hours-right {
+    text-align: right;
+    line-height: 1.5; /* Laisse respirer le texte entre le matin et l'après-midi */
+}
+
+.link-blue { color: var(--primary-blue); text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 5px; margin-top: 10px; }
+.link-blue:hover { text-decoration: underline; }
+.phone-number { font-size: 1.5rem; font-weight: 700; color: var(--primary-blue); text-decoration: none; }
+
+.map-panel { min-height: 400px; }
+
+/* =========================================
+   Footer
+   ========================================= */
+footer { background: var(--dark-bg); color: #cbd5e1; padding: 80px 0 20px; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 50px; margin-bottom: 60px; }
+
+.logo-footer { font-size: 2rem; font-weight: 800; margin-bottom: 20px; }
+.footer-brand p { font-size: 1rem; max-width: 350px; }
+
+.footer-links h3, .footer-social h3 { color: var(--white); margin-bottom: 20px; font-size: 1.2rem; }
+.footer-links ul { list-style: none; }
+.footer-links li { margin-bottom: 12px; }
+.footer-links a { color: #cbd5e1; text-decoration: none; transition: color 0.3s; }
+.footer-links a:hover { color: var(--primary-blue); padding-left: 5px; }
+
+.social-icons { display: flex; gap: 15px; }
+.social-icons a { width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.1); color: var(--white); display: flex; align-items: center; justify-content: center; transition: all 0.3s; text-decoration: none;}
+.social-icons a:hover { background: var(--primary-blue); transform: translateY(-3px); }
+
+.footer-bottom { text-align: center; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.9rem; }
+
+
+/* =========================================
+   Responsive (Tablettes & Mobiles optimisés)
+   ========================================= */
+
+/* --- TABLETTES (Moins de 992px) --- */
+@media screen and (max-width: 992px) {
+    .about-grid, .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    .footer-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 40px;
+    }
+    .footer-brand p { margin: 0 auto; }
+    .social-icons { justify-content: center; }
+    .experience-badge { display: none; } /* Cache le badge pour gagner de la place */
+}
+
+/* --- SMARTPHONES (Moins de 768px) --- */
+@media screen and (max-width: 768px) {
+    /* 1. Réduction de la taille des textes */
+    .hero h1 { font-size: 2.2rem; margin-bottom: 15px; }
+    .page-header h1 { font-size: 2rem; }
+    .section-header h2 { font-size: 1.8rem; margin-bottom: 15px; }
+    .about-text h2 { font-size: 1.8rem; }
+    .hero-subtitle, .page-subtitle { font-size: 1rem; }
+
+    /* 2. Réduction des espaces vides (padding) */
+    .hero { min-height: 60vh; padding: 40px 20px; }
+    .page-header { padding: 60px 20px 40px; }
+    .services-section, .about-section, .contact-section { padding: 50px 0; }
+    .info-panel { padding: 25px; } /* Moins de marge dans le bloc contact */
+
+    /* 3. Forcer les grilles sur 1 seule colonne parfaite */
+    .products-grid, .services-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .product-card {
+        max-width: 100%; /* Permet à la carte de prendre toute la largeur du téléphone */
+    }
+
+    /* 4. Optimisation du menu et des boutons */
+    .nav-container {
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px;
+    }
+    nav ul {
+        gap: 15px;
+        justify-content: center;
+    }
+    .btn-call-header { display: none; } /* On cache ce bouton sur mobile pour ne pas surcharger */
+
+    .hero-actions {
+        flex-direction: column;
+        width: 100%;
+        gap: 15px;
+    }
+    .btn-primary, .btn-secondary {
+        width: 100%;
+        text-align: center;
+        padding: 12px 20px; /* Boutons un peu moins hauts */
+    }
+
+    /* 5. Optimisation des listes et infos */
+    .benefits-list li { font-size: 0.95rem; }
+    .hours-list li { font-size: 0.85rem; }
+    .trust-badge { font-size: 0.8rem; padding: 6px 12px; }
+}
+
+/* --- TRÈS PETITS ÉCRANS (iPhone SE, etc. < 400px) --- */
+@media screen and (max-width: 400px) {
+    .hero h1 { font-size: 1.8rem; }
+    .page-header h1 { font-size: 1.6rem; }
+    .logo { font-size: 1.6rem; }
+    nav ul li a { font-size: 0.9rem; }
+}
+
+
+
+/* =========================================
+   En-tête des pages internes (Accessoires, Devis)
+   ========================================= */
+.page-header {
+    background: linear-gradient(135deg, var(--dark-bg) 0%, #1e293b 100%);
+    padding: 100px 20px 80px;
+    text-align: center;
+    color: var(--white);
+    border-bottom: 4px solid var(--primary-blue);
+}
+
+.page-header h1 {
+    font-size: 2.8rem;
+    font-weight: 800;
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+
+.page-header .page-subtitle {
+    font-size: 1.15rem;
+    color: #cbd5e1;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.text-center {
+    text-align: center;
+}
+
+
+
+/* =========================================
+   Cartes Produits PRO (Page Accessoires)
+   ========================================= */
+
+/* 1. La grille : définit l'espacement et la taille minimale des cartes */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+    padding-bottom: 50px; /* Espace avant la section suivante */
+}
+
+/* 2. La carte : définit l'aspect et force la hauteur maximale */
+.product-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    overflow: hidden; /* Important pour masquer ce qui dépasse */
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    /* Empêche les cartes de devenir trop larges sur grand écran */
+    max-width: 400px;
+    margin: 0 auto; /* Centre la carte dans sa cellule de grille */
+    width: 100%;
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary-blue);
+}
+
+/* 3. L'enveloppe de l'image : FORCE la hauteur */
+.product-img-wrapper {
+    height: 220px; /* La hauteur fixe pour toutes tes images */
+    width: 100%;
+    overflow: hidden;
+    background-color: var(--light-bg);
+}
+
+/* 4. L'image : s'adapte parfaitement à l'enveloppe */
+.product-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    /* C'est la ligne MAGIQUE : recadre proprement sans déformer */
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    display: block;
+}
+
+.product-card:hover .product-img-wrapper img {
+    transform: scale(1.1); /* Zoom au survol */
+}
+
+/* 5. Le contenu textuel sous l'image */
+.product-content {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    text-align: center;
+}
+
+.product-content h3 {
+    font-size: 1.3rem;
+    color: var(--dark-bg);
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.product-content p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+
+/* =========================================
+   Correction de l'alignement (Sans image)
+   ========================================= */
+.mobile-clean {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.mobile-clean h2,
+.mobile-clean .text-secondary {
+    text-align: center;
+}
+
+.mobile-clean .btn-primary {
+    display: table; /* Astuce pour centrer un bouton proprement */
+    margin: 40px auto 0;
+}
+
+.benefits-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px; /* Espacement fixe entre l'icône et le texte */
     margin-bottom: 20px;
 }
 
-.savoir p {
-    padding: 0 20px;
-    margin-left: 2%;
-    margin-right: 2%;
+.benefits-list i {
+    flex-shrink: 0; /* MAGIQUE : Empêche l'icône de s'écraser sur petit écran */
+    margin-top: 4px;
+    margin-right: 0;
+    font-size: 1.3rem;
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-.blue {
-    color: rgb(57, 179, 255);
+/* =========================================
+   Section : Avis Google Clients
+   ========================================= */
+.reviews-section {
+    padding: 80px 0;
+    background-color: var(--white);
 }
 
-/* Deuxième partie "PHONE" en blanc */
-.white {
-    color: white;
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
 }
-b{
-    font-size: smaller;
-    font-weight: normal;
+
+.review-card {
+    background: var(--light-bg);
+    padding: 30px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease;
+}
+
+.review-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+    border-color: #4285F4; /* Bleu Google au survol */
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 15px;
+}
+
+.reviewer-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.reviewer-avatar {
+    width: 45px;
+    height: 45px;
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.reviewer-info h4 {
+    margin: 0;
+    color: var(--dark-bg);
+    font-size: 1.05rem;
+}
+
+.review-date {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.google-logo {
+    width: 24px;
+    height: 24px;
+}
+
+.review-stars {
+    color: #fbbc05; /* Or Google officiel */
+    margin-bottom: 15px;
+    font-size: 1rem;
+    letter-spacing: 2px;
+}
+
+.review-text {
+    font-size: 0.95rem;
+    color: var(--text-main);
+    line-height: 1.6;
+    font-style: italic;
+}
+
+.reviews-action {
+    margin-top: 40px;
     text-align: center;
 }
 
+/* Ajustement mobile pour les avis */
+@media screen and (max-width: 768px) {
+    .reviews-section { padding: 50px 0; }
+    .reviews-grid { grid-template-columns: 1fr; }
+}
+
+/* =========================================
+   Signature Agence Web (Footer)
+   ========================================= */
+.agency-link {
+    color: var(--white);
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.agency-link:hover {
+    color: var(--primary-blue);
+    text-decoration: underline;
+}
+
+/* Cache le retour à la ligne sur PC, l'affiche sur mobile */
+.mobile-break {
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+    .mobile-break {
+        display: block;
+    }
+    .footer-bottom p {
+        line-height: 1.8; /* Espace un peu les deux lignes sur mobile */
+    }
+}

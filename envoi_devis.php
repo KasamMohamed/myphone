@@ -8,10 +8,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $marque = htmlspecialchars($_POST["marque"]);
     $modele = htmlspecialchars($_POST["modele"]);
     $description = htmlspecialchars($_POST["description"]);
-    $problemes = isset($_POST["probleme"]) ? implode(", ", $_POST["probleme"]) : "Non spécifié";
 
-    // Adresse e-mail de réception (REMPLACE par ton adresse)
-    $to = "mkassam39@yahoo.fr";
+    // Vérification du champ "issue_type" au lieu de "probleme"
+    $probleme = !empty($_POST["issue_type"]) ? htmlspecialchars($_POST["issue_type"]) : "Non spécifié";
+
+    // Adresse e-mail de réception
+    $to = "myphone39000@gmail.com";
     $subject = "Nouvelle demande de devis - $nom $prenom";
 
     // Contenu du message
@@ -23,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         Téléphone : $telephone
         Marque : $marque
         Modèle : $modele
-        Problèmes : $problemes
+        Problème : $probleme
         Description : $description
     ";
 
@@ -34,7 +36,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Envoi de l'e-mail
     if (mail($to, $subject, $message, $headers)) {
-        echo "Votre demande de devis a bien été envoyée.";
+        // Redirection vers index.html avec le paramètre devis_sent=true
+        header("Location: index.html?devis_sent=true");
+        exit();
     } else {
         echo "Erreur lors de l'envoi du devis.";
     }
